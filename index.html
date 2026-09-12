@@ -5134,11 +5134,11 @@
                             <div class="cui-wrap-link">
                               <div class="header-cui">
                                 <a
-                                  class="cui-link cui-icon-link cui-icon-link-true auto-load-true"
-                                  href="?post_id=89375&amp;comments=36&amp;get=150&amp;order=DESC"
+                                  class="cui-link cui-icon-link cui-icon-link-true"
+                                  href="?post_id=89375&amp;comments=0&amp;get=150&amp;order=DESC"
                                   id="cui-link-89375"
-                                  title="36 Comment"
-                                  ><span>36</span> Comments</a
+                                  title="0 Comments"
+                                  ><span>0</span> Comments</a
                                 >
                               </div>
                             </div>
@@ -5146,7 +5146,7 @@
                             <div
                               class="cui-wrap-comments"
                               id="cui-wrap-commnent-89375"
-                              style="display: none"
+                              style="display: block"
                             >
                               <div
                                 class="cui-clearfix"
@@ -5161,12 +5161,12 @@
                                       <div
                                         class="cui_comment_count_card cui_card-hadir"
                                       >
-                                        <span>5</span><span>Hadir</span>
+                                        <span>0</span><span>Hadir</span>
                                       </div>
                                       <div
                                         class="cui_comment_count_card cui_card-tidak_hadir"
                                       >
-                                        <span>14</span><span>Tidak hadir</span>
+                                        <span>0</span><span>Tidak hadir</span>
                                       </div>
                                     </div>
                                   </div>
@@ -5181,7 +5181,7 @@
                                       id="respond-89375"
                                     >
                                       <form
-                                        action="https://by.memonika.com/wp-comments-post.php"
+                                        action="javascript:void(0);"
                                         id="commentform-89375"
                                         method="post"
                                       >
@@ -5198,8 +5198,7 @@
                                           /><span class="cui-required">*</span
                                           ><span
                                             class="cui-error-info cui-error-info-name"
-                                            >Mohon maaf! Khusus untuk tamu
-                                            undangan</span
+                                            >Mohon masukkan nama Anda</span
                                           >
                                         </p>
                                         <div class="cui-wrap-textarea">
@@ -5214,7 +5213,7 @@
                                           ><span class="cui-required">*</span
                                           ><span
                                             class="cui-error-info cui-error-info-text"
-                                            >2 characters minimum.</span
+                                            >Minimal 2 karakter.</span
                                           >
                                         </div>
                                         <div class="nm-wrap-comments">
@@ -5236,62 +5235,26 @@
                                               Konfirmasi Kehadiran
                                             </option>
                                             <option value="Hadir">
-                                              Datang
+                                              Hadir
                                             </option>
                                             <option value="Tidak hadir">
-                                              Absen
+                                              Tidak Hadir
                                             </option></select
                                           ><span class="cui-required"></span
                                           ><span
                                             class="cui-error-info cui-error-info-confirm"
-                                          ></span>
+                                            >Pilih konfirmasi kehadiran</span
+                                          >
                                         </div>
                                         <div
                                           class="cui-wrap-submit cui-clearfix"
                                         >
                                           <p class="form-submit">
-                                            <span class="cui-hide"
-                                              >Do not change these fields
-                                              following</span
-                                            ><input
-                                              class="cui-hide"
-                                              name="name"
-                                              type="text"
-                                              value="username"
-                                            /><input
-                                              class="cui-hide"
-                                              name="nombre"
-                                              type="text"
-                                              value=""
-                                            /><input
-                                              class="cui-hide"
-                                              name="form-cui"
-                                              type="text"
-                                              value=""
-                                            /><input
-                                              class="cui-form-btn cui-cancel-btn"
-                                              type="button"
-                                              value="Cancel"
-                                            /><input
+                                            <input
                                               id="submit-89375"
                                               name="submit"
                                               type="submit"
                                               value="Kirim"
-                                            /><input
-                                              name="commentpress"
-                                              type="hidden"
-                                              value="true"
-                                            /><input
-                                              id="comment_post_ID"
-                                              name="comment_post_ID"
-                                              type="hidden"
-                                              value="89375"
-                                            />
-                                            <input
-                                              id="comment_parent"
-                                              name="comment_parent"
-                                              type="hidden"
-                                              value="0"
                                             />
                                           </p>
                                         </div>
@@ -5309,9 +5272,10 @@
                               ></div>
                               <div class="cui-box" id="cui-box">
                                 <ul
-                                  class="cui-container-comments cui-order-DESC cui-has-36-comments cui-multiple-comments"
+                                  class="cui-container-comments cui-order-DESC"
                                   data-order="DESC"
                                   id="cui-container-comment-89375"
+                                  style="display: block"
                                 ></ul>
                               </div>
                               <div
@@ -5328,60 +5292,155 @@
                             }
                           </style>
                           <script>
-                            var txt =
-                              document.getElementById(
-                                "cui-link-89375",
-                              ).innerHTML;
+                            (function() {
+                              var STORAGE_KEY = 'wedding_comments_89375';
 
-                            var pos = txt.replace(/Comments/g, "Comments");
+                              function getComments() {
+                                try {
+                                  var data = localStorage.getItem(STORAGE_KEY);
+                                  return data ? JSON.parse(data) : [];
+                                } catch(e) {
+                                  return [];
+                                }
+                              }
 
-                            document.getElementById(
-                              "cui-link-89375",
-                            ).innerHTML = pos;
+                              function saveComments(comments) {
+                                try {
+                                  localStorage.setItem(STORAGE_KEY, JSON.stringify(comments));
+                                } catch(e) {}
+                              }
 
-                            var txt1 = document.getElementById(
-                              "invitation-count-89375",
-                            ).innerHTML;
+                              function escapeHtml(str) {
+                                var div = document.createElement('div');
+                                div.appendChild(document.createTextNode(str || ''));
+                                return div.innerHTML;
+                              }
 
-                            var pos1 = txt1
+                              function timeAgo(date) {
+                                var seconds = Math.floor((new Date() - new Date(date)) / 1000);
+                                if (seconds < 60) return "Baru saja";
+                                var minutes = Math.floor(seconds / 60);
+                                if (minutes < 60) return minutes + " menit yang lalu";
+                                var hours = Math.floor(minutes / 60);
+                                if (hours < 24) return hours + " jam yang lalu";
+                                var days = Math.floor(hours / 24);
+                                return days + " hari yang lalu";
+                              }
 
-                              .replace(/Hadir/g, "Hadir")
+                              function render() {
+                                var comments = getComments();
+                                var hadirCount = 0;
+                                var tidakHadirCount = 0;
 
-                              .replace(/Tidak hadir/g, "Tidak Hadir")
+                                var container = document.getElementById("cui-container-comment-89375");
+                                if (!container) return;
 
-                              .replace(/Masih Ragu/g, "Masih Ragu");
+                                var html = "";
+                                for (var i = 0; i < comments.length; i++) {
+                                  var c = comments[i];
+                                  if (c.status === "Hadir") hadirCount++;
+                                  else if (c.status === "Tidak hadir") tidakHadirCount++;
 
-                            document.getElementById(
-                              "invitation-count-89375",
-                            ).innerHTML = pos1;
+                                  var badgeClass = (c.status === "Hadir") ? "cui_card-hadir" : "cui_card-tidak_hadir";
+                                  var badgeText = (c.status === "Hadir") ? "Hadir" : "Tidak Hadir";
 
-                            var txt2 =
-                              document.getElementById(
-                                "commentform-89375",
-                              ).innerHTML;
+                                  html += '<li class="depth-1 cui-item-comment">' +
+                                    '<div class="cui-comment-avatar" style="width:28px;height:28px;border-radius:50%;background:#e8edf3;display:flex;align-items:center;justify-content:center;color:#6d7f99;">' +
+                                      '<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>' +
+                                    '</div>' +
+                                    '<div class="cui-comment-content">' +
+                                      '<div class="cui-comment-info">' +
+                                        '<a class="cui-commenter-name" href="javascript:void(0);">' + escapeHtml(c.name) + '</a>' +
+                                        (c.status ? '<span class="cui_comment_count_card ' + badgeClass + '" style="font-size:10px;padding:2px 8px;border-radius:12px;color:#fff;display:inline-block;font-weight:600;">' + badgeText + '</span>' : '') +
+                                        '<span class="cui-comment-time" style="color:#8c97ac;margin-left:auto;font-size:11px;">' + timeAgo(c.time) + '</span>' +
+                                      '</div>' +
+                                      '<div class="cui-comment-text" style="color:#555f77;margin-top:6px;font-size:13px;word-break:break-word;">' +
+                                        escapeHtml(c.comment) +
+                                      '</div>' +
+                                    '</div>' +
+                                  '</li>';
+                                }
 
-                            var pos2 = txt2
+                                container.innerHTML = html;
 
-                              .replace(/Nama/g, "Nama")
+                                var linkComment = document.getElementById("cui-link-89375");
+                                if (linkComment) {
+                                  linkComment.innerHTML = "<span>" + comments.length + "</span> Comments";
+                                }
 
-                              .replace(/Ucapan/g, "Ucapan")
+                                var countWrap = document.getElementById("invitation-count-89375");
+                                if (countWrap) {
+                                  countWrap.innerHTML =
+                                    '<div class="cui_comment_count_card_row_2">' +
+                                      '<div class="cui_comment_count_card cui_card-hadir"><span>' + hadirCount + '</span><span>Hadir</span></div>' +
+                                      '<div class="cui_comment_count_card cui_card-tidak_hadir"><span>' + tidakHadirCount + '</span><span>Tidak Hadir</span></div>' +
+                                    '</div>';
+                                }
+                              }
 
-                              .replace(
-                                /Konfirmasi Kehadiran/g,
-                                "Konfirmasi Kehadiran",
-                              )
+                              window.addEventListener('DOMContentLoaded', function() {
+                                render();
 
-                              .replace(/Datang/g, "Hadir")
+                                var form = document.getElementById("commentform-89375");
+                                if (form) {
+                                  form.addEventListener('submit', function(e) {
+                                    e.preventDefault();
+                                    e.stopImmediatePropagation();
 
-                              .replace(/Absen/g, "Tidak Hadir")
+                                    var authorInput = document.getElementById("author");
+                                    var commentInput = document.getElementById("cui-textarea-89375");
+                                    var konfirmasiSelect = document.getElementById("konfirmasi");
+                                    var statusEl = document.getElementById("cui-comment-status-89375");
 
-                              .replace(/Mungkin/g, "Masih Ragu")
+                                    var name = authorInput ? authorInput.value.trim() : "";
+                                    var comment = commentInput ? commentInput.value.trim() : "";
+                                    var status = konfirmasiSelect ? konfirmasiSelect.value : "";
 
-                              .replace(/Kirim/g, "Kirim");
+                                    var hasError = false;
 
-                            document.getElementById(
-                              "commentform-89375",
-                            ).innerHTML = pos2;
+                                    if (name.length < 1) {
+                                      if (authorInput) authorInput.classList.add("cui-error");
+                                      hasError = true;
+                                    } else if (authorInput) {
+                                      authorInput.classList.remove("cui-error");
+                                    }
+
+                                    if (comment.length < 2) {
+                                      if (commentInput) commentInput.classList.add("cui-error");
+                                      hasError = true;
+                                    } else if (commentInput) {
+                                      commentInput.classList.remove("cui-error");
+                                    }
+
+                                    if (hasError) return false;
+
+                                    var list = getComments();
+                                    list.unshift({
+                                      name: name,
+                                      comment: comment,
+                                      status: status,
+                                      time: new Date().toISOString()
+                                    });
+                                    saveComments(list);
+                                    render();
+
+                                    if (authorInput) authorInput.value = "";
+                                    if (commentInput) commentInput.value = "";
+                                    if (konfirmasiSelect) konfirmasiSelect.selectedIndex = 0;
+
+                                    if (statusEl) {
+                                      statusEl.style.display = "block";
+                                      statusEl.innerHTML = '<p class="cui-ajax-success">Terima kasih atas ucapan dan konfirmasi kehadiran Anda!</p>';
+                                      setTimeout(function() {
+                                        statusEl.style.display = "none";
+                                      }, 3000);
+                                    }
+
+                                    return false;
+                                  }, true);
+                                }
+                              });
+                            })();
                           </script>
                         </div>
                       </div>
@@ -6270,7 +6329,7 @@
         textCounter: "true",
         textCounterNum: "500",
         widthWrap: "",
-        autoLoad: "true",
+        autoLoad: "false",
         thanksComment: "Thanks for your comment!",
         thanksReplyComment: "Thanks for answering the comment!",
         duplicateComment:
